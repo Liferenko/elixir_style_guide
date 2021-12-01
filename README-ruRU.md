@@ -3,7 +3,7 @@
 ## Содержание
 
 * __[Prelude](#prelude)__
-* __[About](#about)__
+* __[О материале](#about)__
 * __[Formatting](#formatting)__
   * [Отступы? Whitespace](#whitespace)
   * [Indentation](#indentation)
@@ -40,21 +40,23 @@
 >
 > —Frank Gehry
 
-Style matters. Стиль кода важен. Elixir уже ???, но всё же каждый язык можно ???
+Style matters. Стиль важен. Elixir уже ???, но всё же каждый язык можно ???
 [Elixir] has plenty of style but like all languages it can be stifled.
 Don't stifle the style.
 
-## About
+## About О материале
 
+Это комьюнити стайлгайд для [языка программирования Elixir][Elixir].
+Присоединяйтесь добавляйте свои ????????
+Предложения и быть частью динамично развивающегося комьюнити.
 This is community style guide for the [Elixir programming language][Elixir].
 Please feel free to make pull requests and suggestions, and be a part of
 Elixir's vibrant community.
 
-If you're looking for other projects to contribute to please see the
-[Hex package manager site][Hex].
+Если вы ищете проекты, в которые можно внести свой вклад - обратите внимание на [сайт пакетного менеджера Hex][Hex].
 
 <a name="translations"></a>
-Translations of the guide are available in the following languages:
+Переводы данного гайда доступны также на следующих языках:
 
 * [Chinese Simplified]
 * [Chinese Traditional]
@@ -64,49 +66,50 @@ Translations of the guide are available in the following languages:
 * [Portuguese]
 * [Spanish]
 
-## Formatting
+## Formatting Форматирование
 
+В Exixir v1.6 представили [Форматирование Кода] и [Mix format] ??task???
 Elixir v1.6 introduced a [Code Formatter] and [Mix format] task.
 The formatter should be preferred for all new projects and source code.
+??Форматтер?? должен быть ??? для каждого нового проекта и исходного кода.
 
+Правила из данного раздела??секции автоматически применяются к форматтеру кода, но приведены здесь как примеры предпочитаемого стиля??
 The rules in this section are applied automatically by the code formatter, but
 are provided here as examples of the preferred style.
 
 ### Whitespace
 
 * <a name="trailing-whitespace"></a>
-  Avoid trailing whitespace.
-  <sup>[[link](#trailing-whitespace)]</sup>
+  Избегайте пробелов в конце строк.
+  <sup>[[ссылка](#trailing-whitespace)]</sup>
 
 * <a name="newline-eof"></a>
-  End each file with a newline.
-  <sup>[[link](#newline-eof)]</sup>
+  Заканчивайте каждый файл пустой строков
+  <sup>[[ссылка](#newline-eof)]</sup>
 
 * <a name="line-endings"></a>
-  Use Unix-style line endings (\*BSD/Solaris/Linux/OSX users are covered by
-  default, Windows users have to be extra careful).
-  <sup>[[link](#line-endings)]</sup>
+  Используйте окончания строк, принятые в Unix
+  (\*пользователи BSD/Solaris/Linux/OSX используют это по умолчанию. Пользователи Windows должны быть ??внимательны на этом моменте??).
+  <sup>[[ссылка](#line-endings)]</sup>
 
 * <a name="autocrlf"></a>
-  If you're using Git you might want to add the following configuration
-  setting to protect your project from Windows line endings creeping in:
-  <sup>[[link](#autocrlf)]</sup>
+  Если вы используете Git, вам имеет смысл добавить в данные настройки, чтобы защитить свой проект от попадания в код окончаний строк, принятых в Windows.
+  <sup>[[ссылка](#autocrlf)]</sup>
 
   ```sh
   git config --global core.autocrlf true
   ```
 
 * <a name="line-length"></a>
-  Limit lines to 98 characters.
-  Otherwise, set the `:line_length` option in your `.formatter.exs` file.
-  <sup>[[link](#line-length)]</sup>
+  Установите ограничение на длину строки в 98 символов.
+  Либо же установите`:line_length` в файле `.formatter.exs` вашего проекта.
+  <sup>[[ссылка](#line-length)]</sup>
 
 * <a name="spaces"></a>
-  Use spaces around operators, after commas, colons and semicolons.
-  Do not put spaces around matched pairs like brackets, parentheses, etc.
-  Whitespace might be (mostly) irrelevant to the Elixir runtime, but its proper
-  use is the key to writing easily readable code.
-  <sup>[[link](#spaces)]</sup>
+  Используйте пробелы вокруг операторов, а также после запятых, двоеточий(:) и точек с запятой(;).
+  Не добавляйте пробелы к парным знакам: квадратные скобки, круглые скобки, фигурные скобки и тд.
+  Пробелы особо (в большинстве случаев) не имеют отношения к Elixir рантайму, но использование пробелов является ключевым моментом в написании легкочитаемого кода.
+  <sup>[[ссылка](#spaces)]</sup>
 
   ```elixir
   sum = 1 + 2
@@ -116,9 +119,8 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="no-spaces"></a>
-  Do not use spaces after non-word operators that only take one argument; or
-  around the range operator.
-  <sup>[[link](#no-spaces)]</sup>
+  Не используйте пробелы после не словестных операторов, принимающих только один аргумент. А также в операторе диапазона.
+  <sup>[[ссылка](#no-spaces)]</sup>
 
   ```elixir
   0 - 1 == -1
@@ -127,9 +129,8 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="def-spacing"></a>
-  Use blank lines between `def`s to break up a function into logical
-  paragraphs.
-  <sup>[[link](#def-spacing)]</sup>
+  Добавляйте пустую строку перед `def`(объявлением функции) для разделения кода на логические части.
+  <sup>[[ссылка](#def-spacing)]</sup>
 
   ```elixir
   def some_function(some_data) do
@@ -154,21 +155,22 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="defmodule-spacing"></a>
-  Don't put a blank line after `defmodule`.
-  <sup>[[link](#defmodule-spacing)]</sup>
+  Не добавляйте пустую строку после `defmodule`.
+  <sup>[[ссылка](#defmodule-spacing)]</sup>
 
 * <a name="long-dos"></a>
-  If the function head and `do:` clause are too long to fit on the same line, put
-  `do:` on a new line, indented one level more than the previous line.
-  <sup>[[link](#long-dos)]</sup>
+  Если начало фукнции и `do:` слишком длинные для одной строки - переместите `do:`
+  на следующую строку и сделайте отступ.
+  <sup>[[ссылка](#long-dos)]</sup>
 
   ```elixir
   def some_function([:foo, :bar, :baz] = args),
     do: Enum.map(args, fn arg -> arg <> " is on a very long line!" end)
   ```
 
-  When the `do:` clause starts on its own line, treat it as a multiline
-  function by separating it with blank lines.
+  Когда часть `do:` у функции располагается на отдельной строке, 
+  относитесь к данной функции уже как к многострочной функции, 
+  то есть отделяйте от других пустыми строками.
 
   ```elixir
   # not preferred
@@ -184,9 +186,8 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="add-blank-line-after-multiline-assignment"></a>
-  Add a blank line after a multiline assignment as a
-  visual cue that the assignment is 'over'.
-  <sup>[[link](#add-blank-line-after-multiline-assignment)]</sup>
+  Добавляйте пустую строку после многострочной операции - это поможет визуально обозначить 'окончание' операции.
+  <sup>[[ссылка](#add-blank-line-after-multiline-assignment)]</sup>
 
   ```elixir
   # not preferred
@@ -206,7 +207,7 @@ are provided here as examples of the preferred style.
   ```
 
   ```elixir
-  # also not preferred
+  # not preferred
   something =
     if x == 2 do
       "Hi"
@@ -227,10 +228,10 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="multiline-enums"></a>
-  If a list, map, or struct spans multiple lines, put each element, as well as
-  the opening and closing brackets, on its own line.
-  Indent each element one level, but not the brackets.
-  <sup>[[link](#multiline-enums)]</sup>
+  Если список, мапа или структура не помещаются в одну строку, расположите каждый элемент
+  (включая открывающую и закрывающую скобку) на отдельной строке.
+  Также отделите горизонтальным отступом элементы от скобок.
+  <sup>[[ссылка](#multiline-enums)]</sup>
 
   ```elixir
   # not preferred
@@ -247,9 +248,9 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="multiline-list-assign"></a>
-  When assigning a list, map, or struct, keep the opening bracket on the same
-  line as the assignment.
-  <sup>[[link](#multiline-list-assign)]</sup>
+  Когда объявляете переменную со списком, мапой или структурой,
+  расположите открывающую скобку на той же строке что и объявление переменной.
+  <sup>[[ссылка](#multiline-list-assign)]</sup>
 
   ```elixir
   # not preferred
@@ -270,7 +271,7 @@ are provided here as examples of the preferred style.
   If any `case` or `cond` clause needs more than one line (due to line length,
   multiple expressions in the clause body, etc.), use multi-line syntax for all
   clauses, and separate each one with a blank line.
-  <sup>[[link](#multiline-case-clauses)]</sup>
+  <sup>[[ссылка](#multiline-case-clauses)]</sup>
 
   ```elixir
   # not preferred
@@ -300,7 +301,7 @@ are provided here as examples of the preferred style.
 
 * <a name="comments-above-line"></a>
   Place comments above the line they comment on.
-  <sup>[[link](#comments-above-line)]</sup>
+  <sup>[[ссылка](#comments-above-line)]</sup>
 
   ```elixir
   String.first(some_string) # not preferred
@@ -312,7 +313,7 @@ are provided here as examples of the preferred style.
 * <a name="comment-leading-spaces"></a>
   Use one space between the leading `#` character of the comment and the text of
   the comment.
-  <sup>[[link](#comment-leading-spaces)]</sup>
+  <sup>[[ссылка](#comment-leading-spaces)]</sup>
 
   ```elixir
   #not preferred
@@ -327,7 +328,7 @@ are provided here as examples of the preferred style.
 * <a name="with-clauses"></a>
   Indent and align successive `with` clauses.
   Put the `do:` argument on a new line, aligned with the previous clauses.
-  <sup>[[link](#with-clauses)]</sup>
+  <sup>[[ссылка](#with-clauses)]</sup>
 
   ```elixir
   with {:ok, foo} <- fetch(opts, :foo),
@@ -338,7 +339,7 @@ are provided here as examples of the preferred style.
 * <a name="with-else"></a>
   If the `with` expression has a `do` block with more than one line, or has an
   `else` option, use multiline syntax.
-  <sup>[[link](#with-else)]</sup>
+  <sup>[[ссылка](#with-else)]</sup>
 
   ```elixir
   with {:ok, foo} <- fetch(opts, :foo),
@@ -354,7 +355,7 @@ are provided here as examples of the preferred style.
 
 * <a name="parentheses-pipe-operator"></a>
   Use parentheses for one-arity functions when using the pipe operator (`|>`).
-  <sup>[[link](#parentheses-pipe-operator)]</sup>
+  <sup>[[ссылка](#parentheses-pipe-operator)]</sup>
 
   ```elixir
   # not preferred
@@ -366,7 +367,7 @@ are provided here as examples of the preferred style.
 
 * <a name="function-names-with-parentheses"></a>
   Never put a space between a function name and the opening parenthesis.
-  <sup>[[link](#function-names-with-parentheses)]</sup>
+  <sup>[[ссылка](#function-names-with-parentheses)]</sup>
 
   ```elixir
   # not preferred
@@ -378,7 +379,7 @@ are provided here as examples of the preferred style.
 
 * <a name="function-calls-and-parentheses"></a>
   Use parentheses in function calls, especially inside a pipeline.
-  <sup>[[link](#function-calls-and-parentheses)]</sup>
+  <sup>[[ссылка](#function-calls-and-parentheses)]</sup>
 
   ```elixir
   # not preferred
@@ -396,7 +397,7 @@ are provided here as examples of the preferred style.
 
 * <a name="keyword-list-brackets"></a>
   Omit square brackets from keyword lists whenever they are optional.
-  <sup>[[link](#keyword-list-brackets)]</sup>
+  <sup>[[ссылка](#keyword-list-brackets)]</sup>
 
   ```elixir
   # not preferred
@@ -416,7 +417,7 @@ generally preferred practice.
 * <a name="single-line-defs"></a>
   Run single-line `def`s that match for the same function together, but separate
   multiline `def`s with a blank line.
-  <sup>[[link](#single-line-defs)]</sup>
+  <sup>[[ссылка](#single-line-defs)]</sup>
 
   ```elixir
   def some_function(nil), do: {:error, "No Value"}
@@ -429,7 +430,7 @@ generally preferred practice.
 
 * <a name="multiple-function-defs"></a>
   If you have more than one multiline `def`, do not use single-line `def`s.
-  <sup>[[link](#multiple-function-defs)]</sup>
+  <sup>[[ссылка](#multiple-function-defs)]</sup>
 
   ```elixir
   def some_function(nil) do
@@ -451,7 +452,7 @@ generally preferred practice.
 
 * <a name="pipe-operator"></a>
   Use the pipe operator to chain functions together.
-  <sup>[[link](#pipe-operator)]</sup>
+  <sup>[[ссылка](#pipe-operator)]</sup>
 
   ```elixir
   # not preferred
@@ -480,7 +481,7 @@ generally preferred practice.
 
 * <a name="avoid-single-pipelines"></a>
   Avoid using the pipe operator just once.
-  <sup>[[link](#avoid-single-pipelines)]</sup>
+  <sup>[[ссылка](#avoid-single-pipelines)]</sup>
 
   ```elixir
   # not preferred
@@ -496,7 +497,7 @@ generally preferred practice.
 
 * <a name="bare-variables"></a>
   Use _bare_ variables in the first part of a function chain.
-  <sup>[[link](#bare-variables)]</sup>
+  <sup>[[ссылка](#bare-variables)]</sup>
 
   ```elixir
   # not preferred
@@ -508,7 +509,7 @@ generally preferred practice.
 
 * <a name="fun-def-parentheses"></a>
   Use parentheses when a `def` has arguments, and omit them when it doesn't.
-  <sup>[[link](#fun-def-parentheses)]</sup>
+  <sup>[[ссылка](#fun-def-parentheses)]</sup>
 
   ```elixir
   # not preferred
@@ -532,7 +533,7 @@ generally preferred practice.
 
 * <a name="do-with-single-line-if-unless"></a>
   Use `do:` for single line `if/unless` statements.
-  <sup>[[link](#do-with-single-line-if-unless)]</sup>
+  <sup>[[ссылка](#do-with-single-line-if-unless)]</sup>
 
   ```elixir
   # preferred
@@ -542,7 +543,7 @@ generally preferred practice.
 * <a name="unless-with-else"></a>
   Never use `unless` with `else`.
   Rewrite these with the positive case first.
-  <sup>[[link](#unless-with-else)]</sup>
+  <sup>[[ссылка](#unless-with-else)]</sup>
 
   ```elixir
   # not preferred
@@ -563,7 +564,7 @@ generally preferred practice.
 * <a name="true-as-last-condition"></a>
   Use `true` as the last condition of the `cond` special form when you need a
   clause that always matches.
-  <sup>[[link](#true-as-last-condition)]</sup>
+  <sup>[[ссылка](#true-as-last-condition)]</sup>
 
   ```elixir
   # not preferred
@@ -596,7 +597,7 @@ generally preferred practice.
   distinguished from variables.
   Starting in Elixir 1.4, the compiler will warn you about
   locations where this ambiguity exists.
-  <sup>[[link](#parentheses-and-functions-with-zero-arity)]</sup>
+  <sup>[[ссылка](#parentheses-and-functions-with-zero-arity)]</sup>
 
   ```elixir
   defp do_stuff, do: ...
@@ -618,7 +619,7 @@ generally preferred practice.
 
 * <a name="snake-case"></a>
   Use `snake_case` for atoms, functions and variables.
-  <sup>[[link](#snake-case)]</sup>
+  <sup>[[ссылка](#snake-case)]</sup>
 
   ```elixir
   # not preferred
@@ -644,7 +645,7 @@ generally preferred practice.
 
 * <a name="camel-case"></a>
   Use `CamelCase` for modules (keep acronyms like HTTP, RFC, XML uppercase).
-  <sup>[[link](#camel-case)]</sup>
+  <sup>[[ссылка](#camel-case)]</sup>
 
   ```elixir
   # not preferred
@@ -674,7 +675,7 @@ generally preferred practice.
   The name of macros suitable for use in guard expressions should be prefixed
   with `is_`.
   For a list of allowed expressions, see the [Guard][Guard Expressions] docs.
-  <sup>[[link](#predicate-macro-names-with-guards)]</sup>
+  <sup>[[ссылка](#predicate-macro-names-with-guards)]</sup>
 
   ```elixir
   defguard is_cool(var) when var == "cool"
@@ -684,7 +685,7 @@ generally preferred practice.
 * <a name="predicate-macro-names-no-guards"></a>
   The names of predicate functions _that cannot be used within guards_ should
   have a trailing question mark (`?`) rather than the `is_` (or similar) prefix.
-  <sup>[[link](#predicate-macro-names-no-guards)]</sup>
+  <sup>[[ссылка](#predicate-macro-names-no-guards)]</sup>
 
   ```elixir
   def cool?(var) do
@@ -695,7 +696,7 @@ generally preferred practice.
 * <a name="private-functions-with-same-name-as-public"></a>
   Private functions with the same name as public functions should start with
   `do_`.
-  <sup>[[link](#private-functions-with-same-name-as-public)]</sup>
+  <sup>[[ссылка](#private-functions-with-same-name-as-public)]</sup>
 
   ```elixir
   def sum(list), do: do_sum(list, 0)
@@ -710,12 +711,12 @@ generally preferred practice.
 * <a name="expressive-code"></a>
   Write expressive code and try to convey your program's intention through
   control-flow, structure and naming.
-  <sup>[[link](#expressive-code)]</sup>
+  <sup>[[ссылка](#expressive-code)]</sup>
 
 * <a name="comment-grammar"></a>
   Comments longer than a word are capitalized, and sentences use punctuation.
   Use [one space][Sentence Spacing] after periods.
-  <sup>[[link](#comment-grammar)]</sup>
+  <sup>[[ссылка](#comment-grammar)]</sup>
 
   ```elixir
   # not preferred
@@ -728,19 +729,19 @@ generally preferred practice.
 
 * <a name="comment-line-length"></a>
   Limit comment lines to 100 characters.
-  <sup>[[link](#comment-line-length)]</sup>
+  <sup>[[ссылка](#comment-line-length)]</sup>
 
 #### Comment Annotations
 
 * <a name="annotations"></a>
   Annotations should usually be written on the line immediately above the
   relevant code.
-  <sup>[[link](#annotations)]</sup>
+  <sup>[[ссылка](#annotations)]</sup>
 
 * <a name="annotation-keyword"></a>
   The annotation keyword is uppercase, and is followed by a colon and a space,
   then a note describing the problem.
-  <sup>[[link](#annotation-keyword)]</sup>
+  <sup>[[ссылка](#annotation-keyword)]</sup>
 
   ```elixir
   # TODO: Deprecate in v1.5.
@@ -751,7 +752,7 @@ generally preferred practice.
   In cases where the problem is so obvious that any documentation would be
   redundant, annotations may be left with no note.
   This usage should be the exception and not the rule.
-  <sup>[[link](#exceptions-to-annotations)]</sup>
+  <sup>[[ссылка](#exceptions-to-annotations)]</sup>
 
   ```elixir
   start_task()
@@ -763,43 +764,43 @@ generally preferred practice.
 * <a name="todo-notes"></a>
   Use `TODO` to note missing features or functionality that should be added at a
   later date.
-  <sup>[[link](#todo-notes)]</sup>
+  <sup>[[ссылка](#todo-notes)]</sup>
 
 * <a name="fixme-notes"></a>
   Use `FIXME` to note broken code that needs to be fixed.
-  <sup>[[link](#fixme-notes)]</sup>
+  <sup>[[ссылка](#fixme-notes)]</sup>
 
 * <a name="optimize-notes"></a>
   Use `OPTIMIZE` to note slow or inefficient code that may cause performance
   problems.
-  <sup>[[link](#optimize-notes)]</sup>
+  <sup>[[ссылка](#optimize-notes)]</sup>
 
 * <a name="hack-notes"></a>
   Use `HACK` to note code smells where questionable coding practices were used
   and should be refactored away.
-  <sup>[[link](#hack-notes)]</sup>
+  <sup>[[ссылка](#hack-notes)]</sup>
 
 * <a name="review-notes"></a>
   Use `REVIEW` to note anything that should be looked at to confirm it is
   working as intended.
   For example: `REVIEW: Are we sure this is how the client does X currently?`
-  <sup>[[link](#review-notes)]</sup>
+  <sup>[[ссылка](#review-notes)]</sup>
 
 * <a name="custom-keywords"></a>
   Use other custom annotation keywords if it feels appropriate, but be sure to
   document them in your project's `README` or similar.
-  <sup>[[link](#custom-keywords)]</sup>
+  <sup>[[ссылка](#custom-keywords)]</sup>
 
 ### Modules
 
 * <a name="one-module-per-file"></a>
   Use one module per file unless the module is only used internally by another
   module (such as a test).
-  <sup>[[link](#one-module-per-file)]</sup>
+  <sup>[[ссылка](#one-module-per-file)]</sup>
 
 * <a name="underscored-filenames"></a>
   Use `snake_case` file names for `CamelCase` module names.
-  <sup>[[link](#underscored-filenames)]</sup>
+  <sup>[[ссылка](#underscored-filenames)]</sup>
 
   ```elixir
   # file is called some_module.ex
@@ -810,7 +811,7 @@ generally preferred practice.
 
 * <a name="module-name-nesting"></a>
   Represent each level of nesting within a module name as a directory.
-  <sup>[[link](#module-name-nesting)]</sup>
+  <sup>[[ссылка](#module-name-nesting)]</sup>
 
   ```elixir
   # file is called parser/core/xml_parser.ex
@@ -821,7 +822,7 @@ generally preferred practice.
 
 * <a name="module-attribute-ordering"></a>
   List module attributes, directives, and macros in the following order:
-  <sup>[[link](#module-attribute-ordering)]</sup>
+  <sup>[[ссылка](#module-attribute-ordering)]</sup>
 
   1. `@moduledoc`
   1. `@behaviour`
@@ -890,7 +891,7 @@ generally preferred practice.
 * <a name="module-pseudo-variable"></a>
   Use the `__MODULE__` pseudo variable when a module refers to itself. This
   avoids having to update any self-references when the module name changes.
-  <sup>[[link](#module-pseudo-variable)]</sup>
+  <sup>[[ссылка](#module-pseudo-variable)]</sup>
 
   ```elixir
   defmodule SomeProject.SomeModule do
@@ -902,7 +903,7 @@ generally preferred practice.
 
 * <a name="alias-self-referencing-modules"></a>
   If you want a prettier name for a module self-reference, set up an alias.
-  <sup>[[link](#alias-self-referencing-modules)]</sup>
+  <sup>[[ссылка](#alias-self-referencing-modules)]</sup>
 
   ```elixir
   defmodule SomeProject.SomeModule do
@@ -918,7 +919,7 @@ generally preferred practice.
   Avoid repeating fragments in module names and namespaces.
   This improves overall readability and
   eliminates [ambiguous aliases][Conflicting Aliases].
-  <sup>[[link](#repetitive-module-names)]</sup>
+  <sup>[[ссылка](#repetitive-module-names)]</sup>
 
   ```elixir
   # not preferred
@@ -940,7 +941,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
 * <a name="moduledocs"></a>
   Always include a `@moduledoc` attribute in the line right after `defmodule` in
   your module.
-  <sup>[[link](#moduledocs)]</sup>
+  <sup>[[ссылка](#moduledocs)]</sup>
 
   ```elixir
   # not preferred
@@ -968,7 +969,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
 
 * <a name="moduledoc-false"></a>
   Use `@moduledoc false` if you do not intend on documenting the module.
-  <sup>[[link](#moduledoc-false)]</sup>
+  <sup>[[ссылка](#moduledoc-false)]</sup>
 
   ```elixir
   defmodule SomeModule do
@@ -979,7 +980,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
 
 * <a name="moduledoc-spacing"></a>
   Separate code after the `@moduledoc` with a blank line.
-  <sup>[[link](#moduledoc-spacing)]</sup>
+  <sup>[[ссылка](#moduledoc-spacing)]</sup>
 
   ```elixir
   # not preferred
@@ -1002,7 +1003,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
 
 * <a name="heredocs"></a>
   Use heredocs with markdown for documentation.
-  <sup>[[link](#heredocs)]</sup>
+  <sup>[[ссылка](#heredocs)]</sup>
 
   ```elixir
   # not preferred
@@ -1044,7 +1045,7 @@ directives (see [Modules](#modules)).
 * <a name="typedocs"></a>
   Place `@typedoc` and `@type` definitions together, and separate each
   pair with a blank line.
-  <sup>[[link](#typedocs)]</sup>
+  <sup>[[ссылка](#typedocs)]</sup>
 
   ```elixir
   defmodule SomeModule do
@@ -1063,7 +1064,7 @@ directives (see [Modules](#modules)).
 * <a name="union-types"></a>
   If a union type is too long to fit on a single line, put each part of the
   type on a separate line, indented one level past the name of the type.
-  <sup>[[link](#union-types)]</sup>
+  <sup>[[ссылка](#union-types)]</sup>
 
   ```elixir
   # not preferred
@@ -1082,7 +1083,7 @@ directives (see [Modules](#modules)).
 * <a name="naming-main-types"></a>
   Name the main type for a module `t`, for example: the type specification for a
   struct.
-  <sup>[[link](#naming-main-types)]</sup>
+  <sup>[[ссылка](#naming-main-types)]</sup>
 
   ```elixir
   defstruct [:name, params: []]
@@ -1097,7 +1098,7 @@ directives (see [Modules](#modules)).
   Place specifications right before the function definition,
   after the `@doc`,
   without separating them by a blank line.
-  <sup>[[link](#spec-spacing)]</sup>
+  <sup>[[ссылка](#spec-spacing)]</sup>
 
   ```elixir
   @doc """
@@ -1114,7 +1115,7 @@ directives (see [Modules](#modules)).
 * <a name="nil-struct-field-defaults"></a>
   Use a list of atoms for struct fields that default to `nil`, followed by the
   other keywords.
-  <sup>[[link](#nil-struct-field-defaults)]</sup>
+  <sup>[[ссылка](#nil-struct-field-defaults)]</sup>
 
   ```elixir
   # not preferred
@@ -1126,7 +1127,7 @@ directives (see [Modules](#modules)).
 
 * <a name="struct-def-brackets"></a>
   Omit square brackets when the argument of a `defstruct` is a keyword list.
-  <sup>[[link](#struct-def-brackets)]</sup>
+  <sup>[[ссылка](#struct-def-brackets)]</sup>
 
   ```elixir
   # not preferred
@@ -1142,7 +1143,7 @@ directives (see [Modules](#modules)).
 * <a name="multiline-structs"></a>
   If a struct definition spans multiple lines, put each element on its own line,
   keeping the elements aligned.
-  <sup>[[link](#multiline-structs)]</sup>
+  <sup>[[ссылка](#multiline-structs)]</sup>
 
   ```elixir
   defstruct foo: "test",
@@ -1166,7 +1167,7 @@ directives (see [Modules](#modules)).
 
 * <a name="exception-names"></a>
   Make exception names end with a trailing `Error`.
-  <sup>[[link](#exception-names)]</sup>
+  <sup>[[ссылка](#exception-names)]</sup>
 
   ```elixir
   # not preferred
@@ -1187,7 +1188,7 @@ directives (see [Modules](#modules)).
 * <a name="lowercase-error-messages"></a>
   Use lowercase error messages when raising exceptions, with no trailing
   punctuation.
-  <sup>[[link](#lowercase-error-messages)]</sup>
+  <sup>[[ссылка](#lowercase-error-messages)]</sup>
 
   ```elixir
   # not preferred
@@ -1201,7 +1202,7 @@ directives (see [Modules](#modules)).
 
 * <a name="keyword-list-syntax"></a>
   Always use the special syntax for keyword lists.
-  <sup>[[link](#keyword-list-syntax)]</sup>
+  <sup>[[ссылка](#keyword-list-syntax)]</sup>
 
   ```elixir
   # not preferred
@@ -1213,7 +1214,7 @@ directives (see [Modules](#modules)).
 
 * <a name="map-key-atom"></a>
   Use the shorthand key-value syntax for maps when all of the keys are atoms.
-  <sup>[[link](#map-key-atom)]</sup>
+  <sup>[[ссылка](#map-key-atom)]</sup>
 
   ```elixir
   # not preferred
@@ -1225,7 +1226,7 @@ directives (see [Modules](#modules)).
 
 * <a name="map-key-arrow"></a>
   Use the verbose key-value syntax for maps if any key is not an atom.
-  <sup>[[link](#map-key-arrow)]</sup>
+  <sup>[[ссылка](#map-key-arrow)]</sup>
 
   ```elixir
   # not preferred
@@ -1239,7 +1240,7 @@ directives (see [Modules](#modules)).
 
 * <a name="strings-matching-with-concatenator"></a>
   Match strings using the string concatenator rather than binary patterns:
-  <sup>[[link](#strings-matching-with-concatenator)]</sup>
+  <sup>[[ссылка](#strings-matching-with-concatenator)]</sup>
 
   ```elixir
   # not preferred
@@ -1257,7 +1258,7 @@ _No guidelines for regular expressions have been added yet._
 
 * <a name="avoid-metaprogramming"></a>
   Avoid needless metaprogramming.
-  <sup>[[link](#avoid-metaprogramming)]</sup>
+  <sup>[[ссылка](#avoid-metaprogramming)]</sup>
 
 ### Testing
 
@@ -1265,7 +1266,7 @@ _No guidelines for regular expressions have been added yet._
   When writing [ExUnit] assertions, put the expression being tested to the left
   of the operator, and the expected result to the right, unless the assertion is
   a pattern match.
-  <sup>[[link](#testing-assert-order)]</sup>
+  <sup>[[ссылка](#testing-assert-order)]</sup>
 
   ```elixir
   # preferred
