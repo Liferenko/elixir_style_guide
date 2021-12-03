@@ -5,9 +5,9 @@
 * __[Prelude](#prelude)__
 * __[О материале](#about)__
 * __[Formatting](#formatting)__
-  * [Отступы? Whitespace](#whitespace)
-  * [Indentation](#indentation)
-  * [Parentheses](#parentheses)
+  * [Пробелы Whitespace](#whitespace)
+  * [Отступы](#indentation)
+  * [Круглые скобки](#parentheses)
 * __[The Guide](#the-guide)__
   * [Expressions](#expressions)
   * [Именование? Нейминг Naming](#naming)
@@ -173,12 +173,12 @@ are provided here as examples of the preferred style.
   то есть отделяйте от других пустыми строками.
 
   ```elixir
-  # not preferred
+  # не правильно
   def some_function([]), do: :empty
   def some_function(_),
     do: :very_long_line_here
 
-  # preferred
+  # правильно
   def some_function([]), do: :empty
 
   def some_function(_),
@@ -190,14 +190,14 @@ are provided here as examples of the preferred style.
   <sup>[[ссылка](#add-blank-line-after-multiline-assignment)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   some_string =
     "Hello"
     |> String.downcase()
     |> String.trim()
   another_string <> some_string
 
-  # preferred
+  # правильно
   some_string =
     "Hello"
     |> String.downcase()
@@ -207,7 +207,7 @@ are provided here as examples of the preferred style.
   ```
 
   ```elixir
-  # not preferred
+  # не правильно
   something =
     if x == 2 do
       "Hi"
@@ -216,7 +216,7 @@ are provided here as examples of the preferred style.
     end
   String.downcase(something)
 
-  # preferred
+  # правильно
   something =
     if x == 2 do
       "Hi"
@@ -234,11 +234,11 @@ are provided here as examples of the preferred style.
   <sup>[[ссылка](#multiline-enums)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   [:first_item, :second_item, :next_item,
   :final_item]
 
-  # preferred
+  # правильно
   [
     :first_item,
     :second_item,
@@ -253,14 +253,14 @@ are provided here as examples of the preferred style.
   <sup>[[ссылка](#multiline-list-assign)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   list =
   [
     :first_item,
     :second_item
   ]
 
-  # preferred
+  # правильно
   list = [
     :first_item,
     :second_item
@@ -268,19 +268,20 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="multiline-case-clauses"></a>
-  If any `case` or `cond` clause needs more than one line (due to line length,
-  multiple expressions in the clause body, etc.), use multi-line syntax for all
-  clauses, and separate each one with a blank line.
+  Если `case` или `cond` не помещается в одну строку
+  (или из-за длины строки, или же из-за нескольких положений(clauses) и тд),
+  стоит использовать многострочный синтаксис для каждого положение и разделять
+  их пустой строкой.
   <sup>[[ссылка](#multiline-case-clauses)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   case arg do
     true -> IO.puts("ok"); :ok
     false -> :error
   end
 
-  # not preferred
+  # не правильно
   case arg do
     true ->
       IO.puts("ok")
@@ -288,7 +289,7 @@ are provided here as examples of the preferred style.
     false -> :error
   end
 
-  # preferred
+  # правильно
   case arg do
     true ->
       IO.puts("ok")
@@ -300,34 +301,33 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="comments-above-line"></a>
-  Place comments above the line they comment on.
+  Располагайте комментарии НАД комментируемым кодом.
   <sup>[[ссылка](#comments-above-line)]</sup>
 
   ```elixir
-  String.first(some_string) # not preferred
+  String.first(some_string) # не правильно
 
-  # preferred
+  # правильно
   String.first(some_string)
   ```
 
 * <a name="comment-leading-spaces"></a>
-  Use one space between the leading `#` character of the comment and the text of
-  the comment.
+  Используйте один пробел между начальным `#` и текстом комментария.
   <sup>[[ссылка](#comment-leading-spaces)]</sup>
 
   ```elixir
-  #not preferred
+  #не правильно
   String.first(some_string)
 
-  # preferred
+  # правильно
   String.first(some_string)
   ```
 
-### Indentation
+### Отступы
 
 * <a name="with-clauses"></a>
-  Indent and align successive `with` clauses.
-  Put the `do:` argument on a new line, aligned with the previous clauses.
+  Добавляйте отступ и уравнивайте по одной линии {:ok,...}-положения.
+  Также распологайте `do:` на новой строке и ровняйте под вышестоящий код.
   <sup>[[ссылка](#with-clauses)]</sup>
 
   ```elixir
@@ -337,6 +337,8 @@ are provided here as examples of the preferred style.
   ```
 
 * <a name="with-else"></a>
+  Если `with`-выражение имеет `do` с ???? или имеет `else`
+  - используйте многострочный синтаксис.
   If the `with` expression has a `do` block with more than one line, or has an
   `else` option, use multiline syntax.
   <sup>[[ссылка](#with-else)]</sup>
@@ -351,70 +353,77 @@ are provided here as examples of the preferred style.
   end
   ```
 
-### Parentheses
+### Круглые скобки
 
 * <a name="parentheses-pipe-operator"></a>
-  Use parentheses for one-arity functions when using the pipe operator (`|>`).
+  Используйте круглые скобки для функций с одним аргументом,
+  когда используете оператор `|>`.
   <sup>[[ссылка](#parentheses-pipe-operator)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   some_string |> String.downcase |> String.trim
 
-  # preferred
+  # правильно
   some_string |> String.downcase() |> String.trim()
   ```
 
 * <a name="function-names-with-parentheses"></a>
-  Never put a space between a function name and the opening parenthesis.
+  Не стоит ставить пробел между названием функции и блоком аргументов. 
   <sup>[[ссылка](#function-names-with-parentheses)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   f (3 + 2)
 
-  # preferred
+  # правильно
   f(3 + 2)
   ```
 
 * <a name="function-calls-and-parentheses"></a>
-  Use parentheses in function calls, especially inside a pipeline.
+  Используйте круглые скобки в вызове функции. Особенно в операторе `|>`.
   <sup>[[ссылка](#function-calls-and-parentheses)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   f 3
 
-  # preferred
+  # правильно
   f(3)
 
-  # not preferred and parses as rem(2, (3 |> g)), which is not what you want.
+  # не правильно так как будет распознано как rem(2, (3 |> g)), и это не то поведение, которое ожидается.
   2 |> rem 3 |> g
 
-  # preferred
+  # правильно
   2 |> rem(3) |> g()
   ```
 
 * <a name="keyword-list-brackets"></a>
+  Избегайте квадратные скобки в key-value-списках ???
   Omit square brackets from keyword lists whenever they are optional.
   <sup>[[ссылка](#keyword-list-brackets)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   some_function(foo, bar, [a: "baz", b: "qux"])
 
-  # preferred
+  # правильно
   some_function(foo, bar, a: "baz", b: "qux")
   ```
 
-## The Guide
+## The Guide Гид
+
+Правила из этой секции могут не соответствовать код форматтеру ???,
+но предпочтительно в практике ????
 
 The rules in this section may not be applied by the code formatter, but they are
 generally preferred practice.
 
-### Expressions
+### Expressions Выражения
 
 * <a name="single-line-defs"></a>
+  ??? однострочные `def` подходящие ???, но отделяются от многострочной функции
+  одной пустой строкой ????????
   Run single-line `def`s that match for the same function together, but separate
   multiline `def`s with a blank line.
   <sup>[[ссылка](#single-line-defs)]</sup>
@@ -429,6 +438,9 @@ generally preferred practice.
   ```
 
 * <a name="multiple-function-defs"></a>
+  Если имеется более одной многострочной функции,
+  не используйте однострочные варианты этой функции ???
+
   If you have more than one multiline `def`, do not use single-line `def`s.
   <sup>[[ссылка](#multiple-function-defs)]</sup>
 
@@ -451,21 +463,24 @@ generally preferred practice.
   ```
 
 * <a name="pipe-operator"></a>
+  Используйте `|>`-оператор для последовательного вызова функций ???
   Use the pipe operator to chain functions together.
   <sup>[[ссылка](#pipe-operator)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   String.trim(String.downcase(some_string))
 
-  # preferred
+  # правильно
   some_string |> String.downcase() |> String.trim()
 
+  # Многострочные конвейеры больше не ????
   # Multiline pipelines are not further indented
   some_string
   |> String.downcase()
   |> String.trim()
 
+  # ????????
   # Multiline pipelines on the right side of a pattern match
   # should be indented on a new line
   sanitized_string =
@@ -474,45 +489,49 @@ generally preferred practice.
     |> String.trim()
   ```
 
+  ?????????
   While this is the preferred method, take into account that copy-pasting
   multiline pipelines into IEx might result in a syntax error, as IEx will
   evaluate the first line without realizing that the next line has a pipeline.
   To avoid this, you can wrap the pasted code in parentheses.
 
 * <a name="avoid-single-pipelines"></a>
-  Avoid using the pipe operator just once.
+  Избегайте единоразовое использование `|>`-оператора.
   <sup>[[ссылка](#avoid-single-pipelines)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   some_string |> String.downcase()
 
   System.version() |> Version.parse()
 
-  # preferred
+  # правильно
   String.downcase(some_string)
 
   Version.parse(System.version())
   ```
 
 * <a name="bare-variables"></a>
+  Используйте ???? переменные в начале цепи/конвейера    ??????
   Use _bare_ variables in the first part of a function chain.
   <sup>[[ссылка](#bare-variables)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   String.trim(some_string) |> String.downcase() |> String.codepoints()
 
-  # preferred
+  # правильно
   some_string |> String.trim() |> String.downcase() |> String.codepoints()
   ```
 
 * <a name="fun-def-parentheses"></a>
+  Используйте круглые скобки когда `def` имеет аргументы
+  и измегайте??? когда не нужно ???
   Use parentheses when a `def` has arguments, and omit them when it doesn't.
   <sup>[[ссылка](#fun-def-parentheses)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   def some_function arg1, arg2 do
     # body omitted
   end
@@ -521,7 +540,7 @@ generally preferred practice.
     # body omitted
   end
 
-  # preferred
+  # правильно
   def some_function(arg1, arg2) do
     # body omitted
   end
@@ -536,7 +555,7 @@ generally preferred practice.
   <sup>[[ссылка](#do-with-single-line-if-unless)]</sup>
 
   ```elixir
-  # preferred
+  # правильно
   if some_condition, do: # some_stuff
   ```
 
@@ -546,14 +565,14 @@ generally preferred practice.
   <sup>[[ссылка](#unless-with-else)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   unless success do
     IO.puts('failure')
   else
     IO.puts('success')
   end
 
-  # preferred
+  # правильно
   if success do
     IO.puts('success')
   else
@@ -567,7 +586,7 @@ generally preferred practice.
   <sup>[[ссылка](#true-as-last-condition)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   cond do
     1 + 2 == 5 ->
       "Nope"
@@ -579,7 +598,7 @@ generally preferred practice.
       "OK"
   end
 
-  # preferred
+  # правильно
   cond do
     1 + 2 == 5 ->
       "Nope"
@@ -602,13 +621,13 @@ generally preferred practice.
   ```elixir
   defp do_stuff, do: ...
 
-  # not preferred
+  # не правильно
   def my_func do
     # is this a variable or a function call?
     do_stuff
   end
 
-  # preferred
+  # правильно
   def my_func do
     # this is clearly a function call
     do_stuff()
@@ -622,7 +641,7 @@ generally preferred practice.
   <sup>[[ссылка](#snake-case)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   :"some atom"
   :SomeAtom
   :someAtom
@@ -633,7 +652,7 @@ generally preferred practice.
     ...
   end
 
-  # preferred
+  # правильно
   :some_atom
 
   some_var = 5
@@ -648,7 +667,7 @@ generally preferred practice.
   <sup>[[ссылка](#camel-case)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defmodule Somemodule do
     ...
   end
@@ -661,7 +680,7 @@ generally preferred practice.
     ...
   end
 
-  # preferred
+  # правильно
   defmodule SomeModule do
     ...
   end
@@ -719,10 +738,10 @@ generally preferred practice.
   <sup>[[ссылка](#comment-grammar)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   # these lowercase comments are missing punctuation
 
-  # preferred
+  # правильно
   # Capitalization example
   # Use punctuation for complete sentences.
   ```
@@ -922,12 +941,12 @@ generally preferred practice.
   <sup>[[ссылка](#repetitive-module-names)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defmodule Todo.Todo do
     ...
   end
 
-  # preferred
+  # правильно
   defmodule Todo.Item do
     ...
   end
@@ -944,7 +963,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   <sup>[[ссылка](#moduledocs)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
 
   defmodule AnotherModule do
     use SomeModule
@@ -955,7 +974,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
     ...
   end
 
-  # preferred
+  # правильно
 
   defmodule AThirdModule do
     @moduledoc """
@@ -983,7 +1002,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   <sup>[[ссылка](#moduledoc-spacing)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defmodule SomeModule do
     @moduledoc """
     About the module
@@ -991,7 +1010,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
     use AnotherModule
   end
 
-  # preferred
+  # правильно
   defmodule SomeModule do
     @moduledoc """
     About the module
@@ -1006,7 +1025,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   <sup>[[ссылка](#heredocs)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defmodule SomeModule do
     @moduledoc "About the module"
   end
@@ -1021,7 +1040,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
     """
   end
 
-  # preferred
+  # правильно
   defmodule SomeModule do
     @moduledoc """
     About the module
@@ -1067,11 +1086,11 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#union-types)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   @type long_union_type ::
           some_type | another_type | some_other_type | one_more_type | a_final_type
 
-  # preferred
+  # правильно
   @type long_union_type ::
           some_type
           | another_type
@@ -1118,10 +1137,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#nil-struct-field-defaults)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defstruct name: nil, params: nil, active: true
 
-  # preferred
+  # правильно
   defstruct [:name, :params, active: true]
   ```
 
@@ -1130,10 +1149,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#struct-def-brackets)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defstruct [params: [], active: true]
 
-  # preferred
+  # правильно
   defstruct params: [], active: true
 
   # required - brackets are not optional, with at least one atom in the list
@@ -1170,7 +1189,7 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#exception-names)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   defmodule BadHTTPCode do
     defexception [:message]
   end
@@ -1179,7 +1198,7 @@ directives (see [Modules](#modules)).
     defexception [:message]
   end
 
-  # preferred
+  # правильно
   defmodule BadHTTPCodeError do
     defexception [:message]
   end
@@ -1191,10 +1210,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#lowercase-error-messages)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   raise ArgumentError, "This is not valid."
 
-  # preferred
+  # правильно
   raise ArgumentError, "this is not valid"
   ```
 
@@ -1205,10 +1224,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#keyword-list-syntax)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   some_value = [{:a, "baz"}, {:b, "qux"}]
 
-  # preferred
+  # правильно
   some_value = [a: "baz", b: "qux"]
   ```
 
@@ -1217,10 +1236,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#map-key-atom)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   %{:a => 1, :b => 2, :c => 0}
 
-  # preferred
+  # правильно
   %{a: 1, b: 2, c: 3}
   ```
 
@@ -1229,10 +1248,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#map-key-arrow)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   %{"c" => 0, a: 1, b: 2}
 
-  # preferred
+  # правильно
   %{:a => 1, :b => 2, "c" => 0}
   ```
 
@@ -1243,10 +1262,10 @@ directives (see [Modules](#modules)).
   <sup>[[ссылка](#strings-matching-with-concatenator)]</sup>
 
   ```elixir
-  # not preferred
+  # не правильно
   <<"my"::utf8, _rest::bytes>> = "my string"
 
-  # preferred
+  # правильно
   "my" <> _rest = "my string"
   ```
 
@@ -1269,10 +1288,10 @@ _No guidelines for regular expressions have been added yet._
   <sup>[[ссылка](#testing-assert-order)]</sup>
 
   ```elixir
-  # preferred
+  # правильно
   assert actual_function(1) == true
 
-  # not preferred
+  # не правильно
   assert true == actual_function(1)
 
   # required - the assertion is a pattern match
