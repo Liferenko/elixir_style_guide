@@ -10,7 +10,7 @@
   * [Круглые скобки](#parentheses)
 * __[The Guide](#the-guide)__
   * [Expressions](#expressions)
-  * [Именование? Нейминг Naming](#naming)
+  * [Именование](#naming)
   * [Комментарии](#comments)
     * [Comment Annotations](#comment-annotations)
   * [Модули](#modules)
@@ -551,7 +551,7 @@ generally preferred practice.
   ```
 
 * <a name="do-with-single-line-if-unless"></a>
-  Use `do:` for single line `if/unless` statements.
+  Используйте `do:` для однострочного `if/unless` условия.
   <sup>[[ссылка](#do-with-single-line-if-unless)]</sup>
 
   ```elixir
@@ -560,8 +560,8 @@ generally preferred practice.
   ```
 
 * <a name="unless-with-else"></a>
-  Never use `unless` with `else`.
-  Rewrite these with the positive case first.
+  Никогда не используйте `unless` с `else`.
+  Перепишите их в позитивном ключе (if-else)
   <sup>[[ссылка](#unless-with-else)]</sup>
 
   ```elixir
@@ -581,8 +581,8 @@ generally preferred practice.
   ```
 
 * <a name="true-as-last-condition"></a>
-  Use `true` as the last condition of the `cond` special form when you need a
-  clause that always matches.
+  Используйте `true` как последний вариант в `cond` когда вам нужно
+  положение, которое в итоге всегда срабатывает.
   <sup>[[ссылка](#true-as-last-condition)]</sup>
 
   ```elixir
@@ -612,10 +612,10 @@ generally preferred practice.
   ```
 
 * <a name="parentheses-and-functions-with-zero-arity"></a>
-  Use parentheses for calls to functions with zero arity, so they can be
-  distinguished from variables.
-  Starting in Elixir 1.4, the compiler will warn you about
-  locations where this ambiguity exists.
+  Используйте круглые скобки при вызове функций, у которых нет аргументов,
+  дабы отличать их от вызова переменных.
+  Начиная с Elixir 1.4, компилятор предупредит вас
+  о местах, где эта двойственность существует
   <sup>[[ссылка](#parentheses-and-functions-with-zero-arity)]</sup>
 
   ```elixir
@@ -634,10 +634,10 @@ generally preferred practice.
   end
   ```
 
-### Naming
+### Именование
 
 * <a name="snake-case"></a>
-  Use `snake_case` for atoms, functions and variables.
+  Используйте `snake_case` при именовании атомов, функций и переменных.
   <sup>[[ссылка](#snake-case)]</sup>
 
   ```elixir
@@ -663,7 +663,8 @@ generally preferred practice.
   ```
 
 * <a name="camel-case"></a>
-  Use `CamelCase` for modules (keep acronyms like HTTP, RFC, XML uppercase).
+  Используйте `CamelCase` при именовании модулей
+  (сохраняйте акронимы HTTP, RFC, XML и т.п.) 
   <sup>[[ссылка](#camel-case)]</sup>
 
   ```elixir
@@ -691,6 +692,9 @@ generally preferred practice.
   ```
 
 * <a name="predicate-macro-names-with-guards"></a>
+  Имена макросов, подходящих для использования в гардах???, должны начинаться с префикса `is_`.
+  ???
+  Посмотрите документацию по ???[Guard][Guard Expressions], где есть список допустимых выражений???.
   The name of macros suitable for use in guard expressions should be prefixed
   with `is_`.
   For a list of allowed expressions, see the [Guard][Guard Expressions] docs.
@@ -702,75 +706,80 @@ generally preferred practice.
   ```
 
 * <a name="predicate-macro-names-no-guards"></a>
+  ???
   The names of predicate functions _that cannot be used within guards_ should
   have a trailing question mark (`?`) rather than the `is_` (or similar) prefix.
   <sup>[[ссылка](#predicate-macro-names-no-guards)]</sup>
 
   ```elixir
   def cool?(var) do
-    # Complex check if var is cool not possible in a pure function.
+    # ??? Complex check if var is cool not possible in a pure function.
   end
   ```
 
 * <a name="private-functions-with-same-name-as-public"></a>
-  Private functions with the same name as public functions should start with
-  `do_`.
+  Если приватная функция имеет идентичное глобальной функции имя, стоит именовать её с префиксом `do_`.
   <sup>[[ссылка](#private-functions-with-same-name-as-public)]</sup>
 
   ```elixir
   def sum(list), do: do_sum(list, 0)
 
-  # private functions
+  # приватные функции
   defp do_sum([], total), do: total
   defp do_sum([head | tail], total), do: do_sum(tail, head + total)
   ```
 
-### Comments
+### Комментарии
 
 * <a name="expressive-code"></a>
+  Пишите выразительный код, чтобы донести намерение\замысел\цель вашей
+  программы через control-flow???, структуру и именование.
+
   Write expressive code and try to convey your program's intention through
   control-flow, structure and naming.
   <sup>[[ссылка](#expressive-code)]</sup>
 
 * <a name="comment-grammar"></a>
-  Comments longer than a word are capitalized, and sentences use punctuation.
-  Use [one space][Sentence Spacing] after periods.
+  В длинных комментариях к коду стоит соблюдать пунктуацию
+  и начинать их с большой буквы.
+  Ставьте [один пробел][Sentence Spacing] после точки в конце предложения. 
   <sup>[[ссылка](#comment-grammar)]</sup>
 
   ```elixir
   # не правильно
-  # these lowercase comments are missing punctuation
+  # эти комментарии не имеют ни пунктуации, ни большой буквы в начале
 
   # правильно
-  # Capitalization example
-  # Use punctuation for complete sentences.
+  # Пример хорошего комментария.
+  # Используйте пунктуацию в конце предложения.
   ```
 
 * <a name="comment-line-length"></a>
-  Limit comment lines to 100 characters.
+  Комментарий должен быть не длиннее 100 символов
+  в одной строке.
   <sup>[[ссылка](#comment-line-length)]</sup>
 
-#### Comment Annotations
+#### Comment Annotations??????
 
 * <a name="annotations"></a>
-  Annotations should usually be written on the line immediately above the
-  relevant code.
+  Аннотацию к коду стоит распологать на строке сразу над кодом.
   <sup>[[ссылка](#annotations)]</sup>
 
 * <a name="annotation-keyword"></a>
-  The annotation keyword is uppercase, and is followed by a colon and a space,
-  then a note describing the problem.
+  Ключевое слово аннотации должно быть
+  в верхнем регистре и визуально отделено от текста аннотации,
+  описывающего суть.
   <sup>[[ссылка](#annotation-keyword)]</sup>
 
   ```elixir
-  # TODO: Deprecate in v1.5.
+  # TODO: Не используется с версии v1.5.
   def some_function(arg), do: {:ok, arg}
   ```
 
 * <a name="exceptions-to-annotations"></a>
-  In cases where the problem is so obvious that any documentation would be
-  redundant, annotations may be left with no note.
-  This usage should be the exception and not the rule.
+  В случаях когда проблема очевидна и документирование будет излишне,
+  аннотация может быть оставлена без описания сути.
+  Такое использование должно быть скорее исключением, чем правилом.
   <sup>[[ссылка](#exceptions-to-annotations)]</sup>
 
   ```elixir
@@ -781,17 +790,17 @@ generally preferred practice.
   ```
 
 * <a name="todo-notes"></a>
-  Use `TODO` to note missing features or functionality that should be added at a
-  later date.
+  Используйте `TODO` для отметки места с не законченной работой
+  или не готовым функционалом, который должен быть добавлен в ближайшее время.
   <sup>[[ссылка](#todo-notes)]</sup>
 
 * <a name="fixme-notes"></a>
-  Use `FIXME` to note broken code that needs to be fixed.
+  Используйте `FIXME` для отметки сломанного кода, который должен быть доработан.
   <sup>[[ссылка](#fixme-notes)]</sup>
 
 * <a name="optimize-notes"></a>
-  Use `OPTIMIZE` to note slow or inefficient code that may cause performance
-  problems.
+  Используйте `OPTIMIZE` для отметки не эффективного решения,
+  которое может вести к ухудшению производительности кода.
   <sup>[[ссылка](#optimize-notes)]</sup>
 
 * <a name="hack-notes"></a>
