@@ -804,52 +804,51 @@ generally preferred practice.
   <sup>[[ссылка](#optimize-notes)]</sup>
 
 * <a name="hack-notes"></a>
-  Use `HACK` to note code smells where questionable coding practices were used
-  and should be refactored away.
+  Используйте `HACK` для отметки спорного места в коде, который стоит отрефакторить
   <sup>[[ссылка](#hack-notes)]</sup>
 
 * <a name="review-notes"></a>
-  Use `REVIEW` to note anything that should be looked at to confirm it is
-  working as intended.
-  For example: `REVIEW: Are we sure this is how the client does X currently?`
+  Используйте `REVIEW` для отметки мест, которые должны быть замечены при ревью кода и
+  отмеченные как работающие как положено
+  Например: `REVIEW: Мы точно уверены что именно так клиент выполняет X?`
   <sup>[[ссылка](#review-notes)]</sup>
 
 * <a name="custom-keywords"></a>
-  Use other custom annotation keywords if it feels appropriate, but be sure to
-  document them in your project's `README` or similar.
+  Используйте удобные вам аннотации в виде ключевых слов там, где это подходит. Но проверьте, что
+  эти аннотации описаны в README-файле вашего проекта
   <sup>[[ссылка](#custom-keywords)]</sup>
 
-### Modules
+### Модули
 
 * <a name="one-module-per-file"></a>
-  Use one module per file unless the module is only used internally by another
-  module (such as a test).
+  Используйте один модуль на один файл. Исключением может быть случаи, когда другой модуль используется
+  только как используемый только в первом модуле (например, тестовый модуль для основного модуля)
   <sup>[[ссылка](#one-module-per-file)]</sup>
 
 * <a name="underscored-filenames"></a>
-  Use `snake_case` file names for `CamelCase` module names.
+  Используйте `snake_case`-именование файлов для `CamelCase`-именования модулей.
   <sup>[[ссылка](#underscored-filenames)]</sup>
 
   ```elixir
-  # file is called some_module.ex
+  # этот файл называется some_module.ex
 
   defmodule SomeModule do
   end
   ```
 
 * <a name="module-name-nesting"></a>
-  Represent each level of nesting within a module name as a directory.
+  Отображайте каждый уровень глубины расположения файла (каждую директорию) в имени модуля.
   <sup>[[ссылка](#module-name-nesting)]</sup>
 
   ```elixir
-  # file is called parser/core/xml_parser.ex
+  # этот файл располагается в parser/core/xml_parser.ex
 
   defmodule Parser.Core.XMLParser do
   end
   ```
 
 * <a name="module-attribute-ordering"></a>
-  List module attributes, directives, and macros in the following order:
+  Располагайте аттрибуты модуля, директивы и макросы в следующем порядке:
   <sup>[[ссылка](#module-attribute-ordering)]</sup>
 
   1. `@moduledoc`
@@ -866,9 +865,8 @@ generally preferred practice.
   1. `@optional_callbacks`
   1. `defmacro`, `defmodule`, `defguard`, `def`, etc.
 
-  Add a blank line between each grouping, and sort the terms (like module names)
-  alphabetically.
-  Here's an overall example of how you should order things in your modules:
+  Добавляйте пустую строку между каждой группой и сортируйте элементы этих групп в алфавитном порядке.
+  Вот пример того как стоит сортировать элементы в вашем модуле.
 
   ```elixir
   defmodule MyModule do
@@ -917,8 +915,8 @@ generally preferred practice.
   ```
 
 * <a name="module-pseudo-variable"></a>
-  Use the `__MODULE__` pseudo variable when a module refers to itself. This
-  avoids having to update any self-references when the module name changes.
+  Используйте `__MODULE__` как псевдо-переменную когда нужно подставить имя модуля внутри этого же модуля.
+  Это поможет избежать нужды обновлять имя модуля в случае его переименования.
   <sup>[[ссылка](#module-pseudo-variable)]</sup>
 
   ```elixir
@@ -930,7 +928,7 @@ generally preferred practice.
   ```
 
 * <a name="alias-self-referencing-modules"></a>
-  If you want a prettier name for a module self-reference, set up an alias.
+  Если вам нужно более удобное имя модуля в упоминании внутри этого модуля - используйте alias.
   <sup>[[ссылка](#alias-self-referencing-modules)]</sup>
 
   ```elixir
@@ -944,9 +942,8 @@ generally preferred practice.
   ```
 
 * <a name="repetitive-module-names"></a>
-  Avoid repeating fragments in module names and namespaces.
-  This improves overall readability and
-  eliminates [ambiguous aliases][Conflicting Aliases].
+  Избегайте повторяющихся фрагментов в именовании модуля.
+  Это улучшит читаемость кода и устранит [конфликт алиасов][Conflicting Aliases].
   <sup>[[ссылка](#repetitive-module-names)]</sup>
 
   ```elixir
@@ -961,14 +958,13 @@ generally preferred practice.
   end
   ```
 
-### Documentation
+### Документация
 
-Documentation in Elixir (when read either in `iex` with `h` or generated with
-[ExDoc]) uses the [Module Attributes] `@moduledoc` and `@doc`.
+Документация в Elixir использует аттрибуты `@moduledoc` и `@doc` чтобы отображать информацию либо внутри `iex`,
+либо в команде `h`, либо в сгенерированном `ExDoc`.
 
 * <a name="moduledocs"></a>
-  Always include a `@moduledoc` attribute in the line right after `defmodule` in
-  your module.
+  Всегда добавляйте `@moduledoc` сразу после строки с объявлением `defmodule` в вашем модуле.
   <sup>[[ссылка](#moduledocs)]</sup>
 
   ```elixir
@@ -996,7 +992,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   ```
 
 * <a name="moduledoc-false"></a>
-  Use `@moduledoc false` if you do not intend on documenting the module.
+  Используйте `@moduledoc false` если вы не желаете документировать данный модуль.
   <sup>[[ссылка](#moduledoc-false)]</sup>
 
   ```elixir
@@ -1007,7 +1003,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   ```
 
 * <a name="moduledoc-spacing"></a>
-  Separate code after the `@moduledoc` with a blank line.
+  Отделяйте код пустрой строкой после `@moduledoc`.
   <sup>[[ссылка](#moduledoc-spacing)]</sup>
 
   ```elixir
@@ -1030,7 +1026,7 @@ Documentation in Elixir (when read either in `iex` with `h` or generated with
   ```
 
 * <a name="heredocs"></a>
-  Use heredocs with markdown for documentation.
+  Используйте heredocs с разметкой Markdown для документации.
   <sup>[[ссылка](#heredocs)]</sup>
 
   ```elixir
