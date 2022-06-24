@@ -1187,10 +1187,10 @@ directives (see [Modules](#modules)).
   ]
   ```
 
-### Exceptions
+### Исключения
 
 * <a name="exception-names"></a>
-  Make exception names end with a trailing `Error`.
+  При именовании исключений используйте `Error`.
   <sup>[[ссылка](#exception-names)]</sup>
 
   ```elixir
@@ -1210,8 +1210,7 @@ directives (see [Modules](#modules)).
   ```
 
 * <a name="lowercase-error-messages"></a>
-  Use lowercase error messages when raising exceptions, with no trailing
-  punctuation.
+  Используйте сообщения ошибки в формате lowercase для ошибок исключений. В конце описания ошибки знаки пунктуации (точки, запятые и тд) не требуются.
   <sup>[[ссылка](#lowercase-error-messages)]</sup>
 
   ```elixir
@@ -1222,10 +1221,10 @@ directives (see [Modules](#modules)).
   raise ArgumentError, "this is not valid"
   ```
 
-### Collections
+### Collections Коллекции
 
 * <a name="keyword-list-syntax"></a>
-  Always use the special syntax for keyword lists.
+  Используйте специальный синтаксис для key-value списков.
   <sup>[[ссылка](#keyword-list-syntax)]</sup>
 
   ```elixir
@@ -1237,7 +1236,7 @@ directives (see [Modules](#modules)).
   ```
 
 * <a name="map-key-atom"></a>
-  Use the shorthand key-value syntax for maps when all of the keys are atoms.
+  Когда в мапе все ключи являются атомами, используйте упрошённый синтаксис для записи пары ключ-значение.
   <sup>[[ссылка](#map-key-atom)]</sup>
 
   ```elixir
@@ -1249,7 +1248,7 @@ directives (see [Modules](#modules)).
   ```
 
 * <a name="map-key-arrow"></a>
-  Use the verbose key-value syntax for maps if any key is not an atom.
+  Используйте подробный синтаксис для мапы, если хотя бы один из ключей не является атомом.
   <sup>[[ссылка](#map-key-arrow)]</sup>
 
   ```elixir
@@ -1260,7 +1259,7 @@ directives (see [Modules](#modules)).
   %{:a => 1, :b => 2, "c" => 0}
   ```
 
-### Strings
+### Данные в формате String
 
 * <a name="strings-matching-with-concatenator"></a>
   Match strings using the string concatenator rather than binary patterns:
